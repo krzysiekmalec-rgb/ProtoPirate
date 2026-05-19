@@ -79,6 +79,7 @@ static uint16_t mixer_decode(uint32_t encrypted) {
     return (s0 + (s1 << 8)) & 0xFFFF;
 }
 
+#ifdef ENABLE_EMULATE_FEATURE
 static uint32_t mixer_encode(uint32_t serial, uint16_t counter, uint8_t button) {
     build_keystore_from_mfkey(keystore_bytes);
 
@@ -141,6 +142,7 @@ static uint32_t mixer_encode(uint32_t serial, uint16_t counter, uint8_t button) 
     return ((uint32_t)state_a << 24) | ((uint32_t)state_c << 16) | ((uint32_t)state_b << 8) |
            (uint32_t)state_d;
 }
+#endif
 
 struct SubGhzProtocolDecoderKiaV5 {
     SubGhzProtocolDecoderBase base;
